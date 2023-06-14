@@ -4,20 +4,7 @@ const Service = require("./Service");
 
 const getAllServices = async (req, res) => {
   try {
-    const services = await Service.findAndCountAll({
-      include: [
-        {
-          model: Calendar,
-          as: "Calendar",
-          attributes: ["id", "day", "hours"],
-        },
-        {
-          model: User,
-          as: "user",
-          attributes: ["id", "email", "password"],
-        },
-      ],
-    });
+    const services = await Service.findAndCountAll();
     res.json(services);
   } catch (error) {
     console.error("Error fetching services:", error);

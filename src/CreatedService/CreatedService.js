@@ -14,6 +14,9 @@ CreatedService.init(
     serviceId: {
       type: DataTypes.INTEGER,
     },
+    hour: {
+      type: DataTypes.STRING,
+    },
   },
   {
     sequelize,

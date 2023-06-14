@@ -5,7 +5,7 @@ const { body, validationResult } = require("express-validator");
 const ValidationException = require("../shared/ValidationException");
 const { generateAuthToken } = require("../shared/generateAuthToken");
 const bcrypt = require("bcrypt");
-const Cookies = require("js-cookie");
+
 
 router.post(
   "/users",
