@@ -5,7 +5,7 @@ const { body, validationResult } = require("express-validator");
 const ValidationException = require("../shared/ValidationException");
 const { generateAuthToken } = require("../shared/generateAuthToken");
 const bcrypt = require("bcrypt");
-
+const AuthException = require('./../shared/AuthException')
 
 router.post(
   "/users",
@@ -31,7 +31,7 @@ router.post(
       return next(new ValidationException(errors.array()));
     }
     const { user, token } = await UserServices.create(req.body);
-    res.send({ user,token, message: "user_create_success" });
+    res.send({ user, token, message: "user_create_success" });
   }
 );
 
@@ -59,8 +59,10 @@ router.post(
     }
     const token = generateAuthToken(user);
 
-    res.send({ token, message: "login_success" });
+    res.send({user, token, message: "login_success" });
   }
 );
+
+
 
 module.exports = router;
